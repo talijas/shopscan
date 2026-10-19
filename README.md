@@ -1,21 +1,25 @@
-# ShopScan Simple — Phase 1
+# ShopScan — Offline-capable version
 
-A small browser-based barcode scanning prototype for phone, tablet and PC.
+Upload ALL these files to the root of your existing GitHub Pages repository:
+- index.html
+- sw.js
+- manifest.webmanifest
+- icon.svg
 
-## Features
-- Scan common retail barcodes using a device camera.
-- Enter a barcode manually if scanning fails.
-- Repeated barcodes increase the count instead of creating duplicate rows.
-- Save multiple lists by name; each list records its creation date and time.
-- Choose a previously saved list from the dropdown. Each list's products are saved separately.
-- Rename product labels, adjust counts, search and delete entries.
-- Export the active list to Excel (.xlsx) or PDF. Export filenames use the list name.
-- Saves locally in the current browser/device using localStorage.
+Do not delete or clear Chrome site storage: saved lists are stored locally in the browser.
 
-## Run it
-Extract the ZIP and open `shop-product-scanner/index.html` in a modern browser. For camera scanning, serve it from an HTTPS website or localhost and allow camera permission. Internet access is needed to load the scanner and export libraries from CDNs.
+## First-time offline setup
+1. Open https://talijas.github.io/shopscan/ while connected to the internet.
+2. Wait until the banner says "Offline ready ✓ (camera, Excel and PDF cached)".
+3. If it says setup incomplete, refresh once while online. If it remains incomplete, your browser/network may be blocking one of the third-party library CDNs.
+4. Switch on airplane mode and reopen the same website to test camera, list saving, Excel and PDF.
 
-## Important limitations
-- Lists are saved only in the browser on the device where they were created; they do not sync across devices or users.
-- Clearing browser data may remove locally saved lists. Export backups regularly.
-- This is a prototype, not a hosted multi-user production app.
+The first online visit is REQUIRED. Offline mode is device/browser specific. Camera scanning requires a supported secure browser and camera permission. If browser site data is cleared, the app needs online setup again. There is no automatic cross-device sync or cloud backup. Export important lists.
+
+The app caches third-party JavaScript libraries from their original CDNs at initial installation. It does not contain local copies of these libraries. Offline readiness is only reported when all cache entries exist; it does not guarantee every browser supports scanning or exporting.
+
+On some Android devices, installing as a PWA may still require proper PNG app icons; you can use Chrome Add to Home screen as a shortcut.
+
+
+## iPhone focus and lens selection
+Tap Find cameras after granting camera permission, select another rear camera, then tap Start camera. The Zoom slider appears only if the selected camera exposes zoom capabilities. Continuous autofocus is requested when supported. iOS Safari may not expose focus or zoom controls. Try holding a barcode 15–30 cm away and moving slowly closer/farther.
